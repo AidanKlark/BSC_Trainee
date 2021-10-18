@@ -5,8 +5,7 @@ import java.util.regex.Pattern;
 public class Main {
 
     public static void main(String[] args){
-        try {
-            BufferedReader scanner = new BufferedReader(new InputStreamReader(System.in));
+        try (BufferedReader scanner = new BufferedReader(new InputStreamReader(System.in))) {
             String command;
 
             while (!(command = scanner.readLine()).equals("quit")) {

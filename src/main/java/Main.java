@@ -15,7 +15,7 @@ public class Main {
                     command = command.substring(4);
                     Commands.add(command);
 
-                } else if (Pattern.matches("print", command)) {
+                } else if (Pattern.matches("print|print all", command)) {
                     Commands.print(command);
 
                 } else if (Pattern.matches("toggle.+", command)) {

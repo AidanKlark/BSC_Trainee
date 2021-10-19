@@ -39,7 +39,7 @@ public class Main {
             }
 
         } catch (IOException e) {
-            System.out.println("Возникла проблема, повторите ввод: ");
+            System.err.println(e.getMessage());
         }
     }
 }

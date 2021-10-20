@@ -30,6 +30,8 @@ public class Commands {
     }
 
     public static void toggle(int args) {
-        status = !status;
+        if (args == ID) {
+            status = !status;
+        }
     }
 }

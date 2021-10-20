@@ -12,7 +12,10 @@ public class Commands {
 
     public static void add(String a) {
 
-        if (!a.trim().isEmpty()) {
+        if (a.isBlank()) {
+            System.err.println("Попытка добавить пустую задачу");
+
+        } else {
             task = a.trim();
             status = false;
         }
@@ -20,12 +23,11 @@ public class Commands {
 
     public static void print(String b) {
 
-        if (b.equals("print") && !status && task !=null) {
+        if (b.equals("print") && !status && task !=null || b.equals("print all") && task != null) {
             System.out.printf("%d. %s %s\n", ID, statusCheck(), task);
-        }
 
-        if (b.equals("print all") && task != null) {
-            System.out.printf("%d. %s %s\n", ID, statusCheck(), task);
+        } else {
+            System.err.println("Невыполненных задач нет");
         }
     }
 

@@ -30,7 +30,7 @@ public class Main {
                         Commands.toggle(Integer.parseInt(command));
 
                     } catch (NumberFormatException e) {
-                        System.out.println("Пожалуйста, повторите команду toddle n(n - номер задачи): ");
+                        System.err.println("Пожалуйста, повторите команду toddle n(n - номер задачи): ");
                     }
 
                 } else {
@@ -39,7 +39,7 @@ public class Main {
             }
 
         } catch (IOException e) {
-            System.err.println(e.getMessage());
+            System.err.println("Возникла ошибка");
         }
     }
 }

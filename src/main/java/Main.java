@@ -21,17 +21,26 @@ public class Main {
 
                 } else if (Pattern.matches("toggle.+", command)) {
                     try {
-                        Matcher matcher = Pattern.compile("\\d+").matcher(command);
-
-                        while (matcher.find()) {
-                            command = matcher.group();
-                        }
-
-                        Commands.toggle(Integer.parseInt(command));
+                        Commands.toggle(Integer.parseInt(command.replaceAll("\\D+", "")));
 
                     } catch (NumberFormatException e) {
                         System.err.println("Пожалуйста, повторите команду toddle n(n - номер задачи): ");
                     }
+
+                } else if (Pattern.matches("delete.+", command)) {
+                    try {
+                        Commands.delete(Integer.parseInt(command.replaceAll("\\D+", "")));
+
+                    } catch (NumberFormatException e) {
+                        System.err.println("Пожалуйста, повторите команду delete n(n - номер задачи): ");
+                    }
+
+                } else if (Pattern.matches("search.+", command)) {
+                    command = command.substring(7).trim();
+                    Commands.search(command);
+
+                } else if (Pattern.matches("edit.+", command)) {
+                    Commands.edit(command);
 
                 } else {
                     System.out.print("Неправильная команда, повторите ввод: ");

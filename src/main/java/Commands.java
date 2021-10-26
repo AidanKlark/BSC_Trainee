@@ -9,7 +9,7 @@ public class Commands {
     private final static String NO_ARGS = "Нет обязательного аргумента после команды";
 
     private static PrintStream out(Integer key, TaskStatus taskStatus) {
-        return System.out.printf("%d. %s %s\n", key, taskStatus.status ? "[X]" : "[ ]", taskStatus.task);
+        return System.out.printf("%d. %s %s\n", key, taskStatus.isStatus() ? "[X]" : "[ ]", taskStatus.getTask());
     }
 
     private static int findId(String commandId) {
@@ -36,7 +36,7 @@ public class Commands {
     public static void print(String command) {
         if (command.equals("print")) {
             idTask.entrySet().stream()
-                    .filter(a -> !a.getValue().status)
+                    .filter(a -> !a.getValue().isStatus())
                     .forEach(a -> out(a.getKey(), a.getValue()));
         } else {
             idTask.forEach(Commands::out);
@@ -51,7 +51,7 @@ public class Commands {
             if (Pattern.matches("toggle.+", command)) {
 
                 TaskStatus revertStatus = idTask.get(id);
-                idTask.get(id).status = !idTask.get(id).status;
+                idTask.get(id).setStatus(!idTask.get(id).isStatus());
 
             } else if (Pattern.matches("delete.+", command)) {
 
@@ -67,7 +67,7 @@ public class Commands {
     public static void search(String substring) {
         if (!substring.isBlank()) {
             idTask.entrySet().stream()
-                    .filter(a -> a.getValue().task.contains(substring))
+                    .filter(a -> a.getValue().getTask().contains(substring))
                     .forEach(a -> out(a.getKey(), a.getValue()));
         } else {
             System.err.println(NO_ARGS);
@@ -79,8 +79,8 @@ public class Commands {
         TaskStatus newTask = idTask.get(id);
 
         if (newTask != null && id >= 1 && id <= idTask.size()) {
-            newTask.task = editTask.substring(editTask.indexOf(Integer.toString(id)) + 1).trim();
-            newTask.status = false;
+            newTask.setTask(editTask.substring(editTask.indexOf(Integer.toString(id)) + 1));
+            newTask.setStatus(false);
 
         } else {
             System.err.println(NO_ID);

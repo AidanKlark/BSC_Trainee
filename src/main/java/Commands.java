@@ -1,21 +1,26 @@
+import java.io.PrintStream;
 import java.util.HashMap;
+import java.util.regex.Pattern;
 
 public class Commands {
-    private boolean status;
-    private String task;
-    private static HashMap<Integer, Commands> statusId = new HashMap<>();
-    private static int id = 1;
+    private static HashMap<Integer, TaskStatus> idTask = new HashMap<>();
+    private static int mapId = 1;
     private final static String NO_ID = "Задачи под таким номером не существует";
     private final static String NO_ARGS = "Нет обязательного аргумента после команды";
 
-    Commands(String task) {
-        statusId.put(id++, this);
-        this.task = task;
-        this.status = false;
+    private static PrintStream out(Integer key, TaskStatus taskStatus) {
+        return System.out.printf("%d. %s %s\n", key, taskStatus.status ? "[X]" : "[ ]", taskStatus.task);
     }
 
-    private static void out(int i) {
-        System.out.printf("%d. %s %s\n", i, statusId.get(i).status ? "[X]" : "[ ]", statusId.get(i).task);
+    private static int findId(String commandId) {
+        int id = 0;
+
+        try {
+            id = Integer.parseInt(commandId.split(" ") [1]);
+        } catch (NumberFormatException nonNumber) {
+            System.err.println("Введите число после команды");
+        }
+        return id;
     }
 
     public static void add(String task) {
@@ -24,30 +29,36 @@ public class Commands {
             System.err.println(NO_ARGS);
 
         } else {
-            new Commands(task);
+            idTask.put(mapId++, new TaskStatus(task));
         }
     }
 
-    public static void print(String commands) {
-        for (int i : statusId.keySet()) {
-            if (commands.equals("print") && !statusId.get(i).status || commands.equals("print all")) {
-                out(i);
-            }
-        }
-    }
-
-    public static void toggle(int id) {
-        Commands revertStatus = statusId.get(id);
-        if (revertStatus != null || id >= 1 && id < statusId.size()) {
-            statusId.get(id).status = !statusId.get(id).status;
+    public static void print(String command) {
+        if (command.equals("print")) {
+            idTask.entrySet().stream()
+                    .filter(a -> !a.getValue().status)
+                    .forEach(a -> out(a.getKey(), a.getValue()));
         } else {
-            System.err.println(NO_ID);
+            idTask.forEach(Commands::out);
         }
     }
 
-    public static void delete(int id) {
-        if (id >= 1 && id < statusId.size()) {
-            statusId.entrySet().removeIf(y -> (y.getKey() == id));
+    public static void toggleOrDelete(String command) {
+        int id = findId(command);
+
+        if (Pattern.matches("toggle.+", command)) {
+
+            TaskStatus revertStatus = idTask.get(id);
+            if (revertStatus != null || id >= 1 && id < idTask.size()) {
+                idTask.get(id).status = !idTask.get(id).status;
+            }
+
+        } else if (Pattern.matches("delete.+", command)) {
+
+            if (idTask.get(id) != null || id >= 1 && id < idTask.size()) {
+                idTask.entrySet().removeIf(y -> y.getKey() == id);
+            }
+
         } else {
             System.err.println(NO_ID);
         }
@@ -55,21 +66,19 @@ public class Commands {
 
     public static void search(String substring) {
         if (!substring.isBlank()) {
-            for (int i : statusId.keySet()) {
-                if (statusId.get(i).task.contains(substring)) {
-                    out(i);
-                }
-            }
+            idTask.entrySet().stream()
+                    .filter(a -> a.getValue().task.contains(substring))
+                    .forEach(a -> out(a.getKey(), a.getValue()));
         } else {
             System.err.println(NO_ARGS);
         }
     }
 
     public static void edit(String editTask) {
-        int id = Integer.parseInt(editTask.split(" ") [1]);
-        Commands newTask = statusId.get(id);
+        int id = findId(editTask);
+        TaskStatus newTask = idTask.get(id);
 
-        if (id >= 1 && id < statusId.size()) {
+        if (newTask != null && id >= 1 && id < idTask.size()) {
             newTask.task = editTask.substring(editTask.indexOf(Integer.toString(id)) + 1).trim();
             newTask.status = false;
 

@@ -9,36 +9,23 @@ public class Main {
         try (BufferedReader scanner = new BufferedReader(new InputStreamReader(System.in))) {
             String command;
 
-            while (!(command = scanner.readLine()).equals("quit")) {
+            while (!(command = scanner.readLine().trim()).equals("quit")) {
 
-                if (Pattern.matches("add.+", command)) {
+                if (Pattern.matches("add .+", command)) {
                     command = command.substring(4);
                     Commands.add(command);
 
                 } else if (Pattern.matches("print|print all", command)) {
                     Commands.print(command);
 
-                } else if (Pattern.matches("toggle.+", command)) {
-                    try {
-                        Commands.toggle(Integer.parseInt(command.replaceAll("\\D+", "")));
+                } else if (Pattern.matches("toggle .+|delete .+", command)) {
+                        Commands.toggleOrDelete(command);
 
-                    } catch (NumberFormatException e) {
-                        System.err.println("Пожалуйста, повторите команду toddle n(n - номер задачи): ");
-                    }
-
-                } else if (Pattern.matches("delete.+", command)) {
-                    try {
-                        Commands.delete(Integer.parseInt(command.replaceAll("\\D+", "")));
-
-                    } catch (NumberFormatException e) {
-                        System.err.println("Пожалуйста, повторите команду delete n(n - номер задачи): ");
-                    }
-
-                } else if (Pattern.matches("search.+", command)) {
+                } else if (Pattern.matches("search .+", command)) {
                     command = command.substring(7).trim();
                     Commands.search(command);
 
-                } else if (Pattern.matches("edit.+", command)) {
+                } else if (Pattern.matches("edit .+", command)) {
                     Commands.edit(command);
 
                 } else {

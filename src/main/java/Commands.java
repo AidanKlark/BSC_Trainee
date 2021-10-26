@@ -46,23 +46,23 @@ public class Commands {
     public static void toggleOrDelete(String command) {
         int id = findId(command);
 
-        if (Pattern.matches("toggle.+", command)) {
+        if (idTask.get(id) != null || id >= 1 && id <= idTask.size()) {
 
-            TaskStatus revertStatus = idTask.get(id);
-            if (revertStatus != null || id >= 1 && id < idTask.size()) {
+            if (Pattern.matches("toggle.+", command)) {
+
+                TaskStatus revertStatus = idTask.get(id);
                 idTask.get(id).status = !idTask.get(id).status;
-            }
 
-        } else if (Pattern.matches("delete.+", command)) {
+            } else if (Pattern.matches("delete.+", command)) {
 
-            if (idTask.get(id) != null || id >= 1 && id < idTask.size()) {
                 idTask.entrySet().removeIf(y -> y.getKey() == id);
-            }
 
-        } else {
-            System.err.println(NO_ID);
+            } else {
+                System.err.println(NO_ID);
+            }
         }
     }
+
 
     public static void search(String substring) {
         if (!substring.isBlank()) {
@@ -78,7 +78,7 @@ public class Commands {
         int id = findId(editTask);
         TaskStatus newTask = idTask.get(id);
 
-        if (newTask != null && id >= 1 && id < idTask.size()) {
+        if (newTask != null && id >= 1 && id <= idTask.size()) {
             newTask.task = editTask.substring(editTask.indexOf(Integer.toString(id)) + 1).trim();
             newTask.status = false;
 

@@ -12,7 +12,6 @@ public class Main {
             while (!(command = scanner.readLine().trim()).equals("quit")) {
 
                 if (Pattern.matches("add .+", command)) {
-                    command = command.substring(4);
                     Commands.add(command);
 
                 } else if (Pattern.matches("print|print all", command)) {
@@ -22,7 +21,6 @@ public class Main {
                         Commands.toggleOrDelete(command);
 
                 } else if (Pattern.matches("search .+", command)) {
-                    command = command.substring(7).trim();
                     Commands.search(command);
 
                 } else if (Pattern.matches("edit .+", command)) {

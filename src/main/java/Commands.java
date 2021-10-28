@@ -23,7 +23,8 @@ public class Commands {
         return id;
     }
 
-    public static void add(String task) {
+    public static void add(String command) {
+        String task = command.split(" ", 2) [1];
 
         if (task.isBlank()) {
             System.err.println(NO_ARGS);
@@ -46,25 +47,25 @@ public class Commands {
     public static void toggleOrDelete(String command) {
         int id = findId(command);
 
-        if (idTask.get(id) != null || id >= 1 && id <= idTask.size()) {
+        if (idTask.get(id) != null && id >= 1 && id <= idTask.size()) {
 
-            if (Pattern.matches("toggle.+", command)) {
+            if (Pattern.matches("toggle .+", command)) {
 
                 TaskStatus revertStatus = idTask.get(id);
                 idTask.get(id).setStatus(!idTask.get(id).isStatus());
 
-            } else if (Pattern.matches("delete.+", command)) {
+            } else if (Pattern.matches("delete .+", command)) {
 
                 idTask.entrySet().removeIf(y -> y.getKey() == id);
-
-            } else {
-                System.err.println(NO_ID);
             }
+        } else {
+            System.err.println(NO_ID);
         }
     }
 
+    public static void search(String command) {
+        String substring = command.split(" ") [1];
 
-    public static void search(String substring) {
         if (!substring.isBlank()) {
             idTask.entrySet().stream()
                     .filter(a -> a.getValue().getTask().contains(substring))
@@ -74,12 +75,12 @@ public class Commands {
         }
     }
 
-    public static void edit(String editTask) {
-        int id = findId(editTask);
+    public static void edit(String command) {
+        int id = findId(command);
         TaskStatus newTask = idTask.get(id);
 
         if (newTask != null && id >= 1 && id <= idTask.size()) {
-            newTask.setTask(editTask.substring(editTask.indexOf(Integer.toString(id)) + 1));
+            newTask.setTask(command.split(" ") [2]);
             newTask.setStatus(false);
 
         } else {

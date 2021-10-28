@@ -1,4 +1,6 @@
-#ToDoList
+## ToDoList
+
+![Java CI](https://github.com/AidanKlark/BSC_Trainee/actions/workflows/maven.yml/badge.svg)
 
 **Задание на разработку**
 

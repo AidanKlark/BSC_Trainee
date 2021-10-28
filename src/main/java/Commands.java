@@ -80,7 +80,7 @@ public class Commands {
         TaskStatus newTask = idTask.get(id);
 
         if (newTask != null && id >= 1 && id <= idTask.size()) {
-            newTask.setTask(command.split(" ") [2]);
+            newTask.setTask(command.split(" ", 3) [2]);
             newTask.setStatus(false);
 
         } else {

@@ -1,62 +1,40 @@
-import java.io.PrintStream;
-import java.util.HashMap;
 import java.util.regex.Pattern;
 
 public class Commands {
-    private static HashMap<Integer, TaskStatus> idTask = new HashMap<>();
-    private static int mapId = 1;
-    private final static String NO_ID = "Задачи под таким номером не существует";
-    private final static String NO_ARGS = "Нет обязательного аргумента после команды";
-
-    private static PrintStream out(Integer key, TaskStatus taskStatus) {
-        return System.out.printf("%d. %s %s\n", key, taskStatus.isStatus() ? "[X]" : "[ ]", taskStatus.getTask());
-    }
-
-    private static int findId(String commandId) {
-        int id = 0;
-
-        try {
-            id = Integer.parseInt(commandId.split(" ") [1]);
-        } catch (NumberFormatException nonNumber) {
-            System.err.println("Введите число после команды");
-        }
-        return id;
-    }
+    private static final String NO_ID = "Задачи под таким номером не существует";
+    private static final String NO_ARGS = "Нет обязательного аргумента после команды";
 
     public static void add(String command) {
         String task = command.split(" ", 2) [1];
 
-        if (task.isBlank()) {
-            System.err.println(NO_ARGS);
-
+        if (!task.isBlank()) {
+            StorageTask.addTask(new TaskStatus(task));
         } else {
-            idTask.put(mapId++, new TaskStatus(task));
+            System.out.println(NO_ARGS);
         }
     }
 
     public static void print(String command) {
         if (command.equals("print")) {
-            idTask.entrySet().stream()
+            StorageTask.getAllTask().entrySet().stream()
                     .filter(a -> !a.getValue().isStatus())
-                    .forEach(a -> out(a.getKey(), a.getValue()));
+                    .forEach(a -> TaskStatus.out(a.getKey(), a.getValue()));
         } else {
-            idTask.forEach(Commands::out);
+            StorageTask.getAllTask().forEach(TaskStatus::out);
         }
     }
 
     public static void toggleOrDelete(String command) {
-        int id = findId(command);
+        int id = Service.findId(command);
 
-        if (idTask.get(id) != null && id >= 1 && id <= idTask.size()) {
+        if (StorageTask.getAllTask().get(id) != null && id >= 1 && id <= StorageTask.getAllTask().size()) {
 
             if (Pattern.matches("toggle .+", command)) {
 
-                TaskStatus revertStatus = idTask.get(id);
-                idTask.get(id).setStatus(!idTask.get(id).isStatus());
+                StorageTask.getAllTask().get(id).setStatus(!StorageTask.getAllTask().get(id).isStatus());
 
             } else if (Pattern.matches("delete .+", command)) {
-
-                idTask.entrySet().removeIf(y -> y.getKey() == id);
+                StorageTask.removeTask(id);
             }
         } else {
             System.err.println(NO_ID);
@@ -67,19 +45,20 @@ public class Commands {
         String substring = command.split(" ") [1];
 
         if (!substring.isBlank()) {
-            idTask.entrySet().stream()
+            StorageTask.getAllTask().entrySet().stream()
                     .filter(a -> a.getValue().getTask().contains(substring))
-                    .forEach(a -> out(a.getKey(), a.getValue()));
+                    .forEach(a -> TaskStatus.out(a.getKey(), a.getValue()));
         } else {
             System.err.println(NO_ARGS);
         }
     }
 
     public static void edit(String command) {
-        int id = findId(command);
-        TaskStatus newTask = idTask.get(id);
+        int id = Service.findId(command);
 
-        if (newTask != null && id >= 1 && id <= idTask.size()) {
+        TaskStatus newTask = StorageTask.getAllTask().get(id);
+
+        if (newTask != null && id >= 1 && id <= StorageTask.getAllTask().size()) {
             newTask.setTask(command.split(" ", 3) [2]);
             newTask.setStatus(false);
 

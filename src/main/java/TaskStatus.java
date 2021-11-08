@@ -1,3 +1,7 @@
+import lombok.Data;
+import java.io.PrintStream;
+
+@Data
 public class TaskStatus {
     private String task;
     private boolean status;
@@ -7,19 +11,7 @@ public class TaskStatus {
         this.status = false;
     }
 
-    public void setStatus(boolean status) {
-        this.status = status;
-    }
-
-    public void setTask(String task) {
-        this.task = task.trim();
-    }
-
-    public String getTask() {
-        return task;
-    }
-
-    public boolean isStatus() {
-        return status;
+    public static PrintStream out(Integer key, TaskStatus taskStatus) {
+        return System.out.printf("%d. %s %s\n", key, taskStatus.status ? "[X]" : "[ ]", taskStatus.task);
     }
 }

@@ -1,0 +1,22 @@
+<configuration>
+
+    <appender name="file"
+              class="ch.qos.logback.core.FileAppender">
+        <file>./tmp/log.txt</file>
+        <append>true</append>
+        <rollingPolicy
+                class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>slf4jlogbackexample.%d{yyyy-MM-dd}.log</fileNamePattern>
+
+            <maxHistory>10</maxHistory>
+
+        </rollingPolicy>
+        <encoder>
+            <pattern>%d{HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <root level="DEBUG">
+        <appender-ref ref="file" />
+    </root>
+</configuration>

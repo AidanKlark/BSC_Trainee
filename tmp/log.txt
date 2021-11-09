@@ -1,0 +1,103 @@
+22:22:34.443 [main] INFO  Main - Запуск программы
+22:23:00.195 [main] INFO  Service - Пользователь ввел toggle qwerty
+22:25:20.647 [main] INFO  Main - Запуск программы
+22:25:29.428 [main] WARN  Service - Пользователь ввел toggle 231qw
+22:28:43.248 [main] INFO Main - Запуск программы
+22:28:52.982 [main] INFO Service - Запуск findId
+22:28:52.982 [main] WARN Service - Пользователь ввел toggle 12w12wx1
+22:29:33.367 [main] WARN  Service - Пользователь ввел toggle 12dd
+23:03:53 [main] INFO  Main - Запуск программы
+23:04:11 [main] INFO  Commands - Запуск метода ToggleOrDelete
+23:04:11 [main] INFO  Service - Запуск findId
+23:04:11 [main] WARN  Service - Пользователь ввел toggle erwer
+23:05:28 [main] INFO  Main - Запуск программы
+23:05:38 [main] INFO  Commands - Запуск метода ToggleOrDelete
+23:05:38 [main] INFO  Service - Запуск findId
+23:05:38 [main] WARN  Service - Пользователь ввел toggle 123dd
+23:06:30 [main] INFO  Main - Запуск программы
+23:06:37 [main] INFO  Commands - Запуск метода ToggleOrDelete
+23:06:37 [main] INFO  Service - Запуск findId
+23:06:37 [main] WARN  Service - Пользователь ввел toggle 12dsdf
+23:10:06 [main] INFO  Main - Запуск программы
+23:10:12 [main] INFO  Commands - Запуск метода ToggleOrDelete
+23:10:12 [main] INFO  Service - Запуск findId
+23:10:12 [main] WARN  Service - Пользователь ввел toggle 12wc
+23:13:28 [main] INFO  Main - Запуск программы
+23:13:41 [main] INFO  Commands - Запуск метода ToggleOrDelete
+23:13:41 [main] INFO  Service - Запуск findId
+23:13:41 [main] WARN  Service - Пользователь ввел toggle 1212d
+23:14:20 [main] INFO  Main - Запуск программы
+23:14:34 [main] INFO  Commands - Запуск метода ToggleOrDelete
+23:14:34 [main] INFO  Service - Запуск findId
+23:14:34 [main] WARN  Service - Пользователь ввел toggle 121cfdfd
+23:16:37 [main] INFO  Main - Запуск программы
+23:17:53 [main] INFO  Main - Запуск программы
+23:18:44 [main] INFO  Main - Запуск программы
+23:19:18 [main] INFO  Commands - Запуск метода ToggleOrDelete
+23:19:18 [main] INFO  Service - Запуск findId
+23:19:18 [main] WARN  Service - Пользователь ввел toggle 122c
+23:21:10 [main] INFO  Main - Запуск программы
+23:35:28 [main] INFO  Main - Запуск программы
+23:46:49 [main] DEBUG Main - debug
+23:46:49 [main] INFO  Main - info
+23:46:49 [main] WARN  Main - warning
+23:46:49 [main] ERROR Main - error
+23:46:49 [main] INFO  Main - Запуск программы
+23:46:57 [main] INFO  Commands - Запуск метода ToggleOrDelete
+23:46:57 [main] INFO  Service - Запуск findId
+23:46:57 [main] WARN  Service - Пользователь ввел toggle ertert
+23:47:33 [main] DEBUG Main - debug
+23:47:33 [main] INFO  Main - info
+23:47:33 [main] WARN  Main - warning
+23:47:33 [main] ERROR Main - error
+23:47:33 [main] INFO  Main - Запуск программы
+23:47:48 [main] INFO  Commands - Запуск метода ToggleOrDelete
+23:47:48 [main] INFO  Service - Запуск findId
+23:47:48 [main] WARN  Service - Пользователь ввел toggle пшел нахуй
+23:48:23 [main] DEBUG Main - debug
+23:48:23 [main] INFO  Main - info
+23:48:23 [main] WARN  Main - warning
+23:48:23 [main] ERROR Main - error
+23:48:23 [main] INFO  Main - Запуск программы
+23:48:45 [main] INFO  Commands - Запуск метода ToggleOrDelete
+23:48:45 [main] INFO  Service - Запуск findId
+23:48:45 [main] WARN  Service - Пользователь ввел toggle пшел нахуй
+23:50:30 [main] WARN  Main - warning
+23:50:30 [main] ERROR Main - error
+23:51:00 [main] INFO  Main - info
+23:51:00 [main] WARN  Main - warning
+23:51:00 [main] ERROR Main - error
+23:51:00 [main] INFO  Main - Запуск программы
+20:28:05 [main] INFO  Main - Запуск программы
+21:37:35 [main] INFO  Main - Запуск программы
+21:37:51 [main] INFO  command.commandName.ToggleOrDelete - Запуск метода ToggleOrDelete
+21:37:51 [main] INFO  service.Service - Запуск findId
+21:38:03 [main] INFO  command.commandName.ToggleOrDelete - Запуск метода ToggleOrDelete
+21:38:03 [main] INFO  service.Service - Запуск findId
+21:38:03 [main] WARN  service.Service - Пользователь ввел delete 12jnjn
+22:06:58 [main] INFO  Main - Запуск программы
+22:07:59 [main] INFO  Main - Запуск программы
+22:08:09 [main] DEBUG Validator - Пользователь ввел команду : add dsdsds
+22:08:09 [main] DEBUG command.commandName.Add - Добавлена задача: dsdsds
+22:08:11 [main] DEBUG Validator - Пользователь ввел команду : add ssdsfff
+22:08:11 [main] DEBUG command.commandName.Add - Добавлена задача: ssdsfff
+22:08:13 [main] DEBUG Validator - Пользователь ввел команду : add dfgfh
+22:08:13 [main] DEBUG command.commandName.Add - Добавлена задача: dfgfh
+22:08:18 [main] DEBUG Validator - Пользователь ввел команду : toggle 12vv
+22:08:18 [main] INFO  command.commandName.ToggleOrDelete - Запуск метода ToggleOrDelete
+22:08:18 [main] INFO  service.Service - Запуск findId
+22:08:18 [main] ERROR service.Service - ПОЛЬЗОВАТЕЛЬ ВВЕЛ НЕ ЧИСЛО: toggle 12vv
+22:08:24 [main] DEBUG Validator - Пользователь ввел команду : toggle 1
+22:08:24 [main] INFO  command.commandName.ToggleOrDelete - Запуск метода ToggleOrDelete
+22:08:24 [main] INFO  service.Service - Запуск findId
+22:08:24 [main] DEBUG command.commandName.ToggleOrDelete - Изменение статуса задачи по ID: 1
+22:08:28 [main] DEBUG Validator - Пользователь ввел команду : delete 1
+22:08:28 [main] INFO  command.commandName.ToggleOrDelete - Запуск метода ToggleOrDelete
+22:08:28 [main] INFO  service.Service - Запуск findId
+22:08:28 [main] DEBUG command.commandName.ToggleOrDelete - Удаление задачи по ID: 1
+22:08:33 [main] DEBUG Validator - Пользователь ввел команду : edit ss
+22:08:33 [main] INFO  service.Service - Запуск findId
+22:08:33 [main] ERROR service.Service - ПОЛЬЗОВАТЕЛЬ ВВЕЛ НЕ ЧИСЛО: edit ss
+22:08:33 [main] DEBUG command.commandName.Edit - Редактирование задачи по ID: 0
+22:08:45 [main] DEBUG Validator - Пользователь ввел команду : search s
+22:08:45 [main] DEBUG command.commandName.Search - Поиск по ключевому слову: s

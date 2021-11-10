@@ -17,9 +17,9 @@ public class Add extends CommandImpl {
 
             if (!task.isBlank()) {
                 StorageTask.addTask(new TaskStatus(task));
-            } else {
-                System.out.println(NO_ARGS);
             }
+        } else {
+            System.out.println(NO_ARGS);
         }
     }
 }

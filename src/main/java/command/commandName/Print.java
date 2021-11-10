@@ -7,13 +7,14 @@ public class Print extends CommandImpl {
     @Override
     public void execute(String command) {
 
-        if (command.equals("print")) {
-
-            StorageTask.getAllTask().entrySet().stream()
+        switch (command) {
+            case "print" -> StorageTask.getAllTask().entrySet().stream()
                     .filter(a -> !a.getValue().isStatus())
-                    .forEach(a -> CommandImpl.out(a.getKey(), a.getValue()));
-        } else {
-            StorageTask.getAllTask().forEach(CommandImpl::out);
+                    .forEach(a -> super.out(a.getKey(), a.getValue()));
+
+            case "print all" -> StorageTask.getAllTask().forEach(super::out);
+
+            default -> System.out.println("Неверная команда, повторите ввод");
         }
     }
 }

@@ -17,7 +17,6 @@ public class Validator {
         commandType.put("add", new Add());
         commandType.put("toggle", new Toggle());
         commandType.put("print", new Print());
-        commandType.put("print all", new Print());
         commandType.put("search", new Search());
         commandType.put("edit", new Edit());
         commandType.put("delete", new Delete());

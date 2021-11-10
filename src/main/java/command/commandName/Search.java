@@ -19,7 +19,7 @@ public class Search extends CommandImpl {
             if (!substring.isBlank()) {
                 StorageTask.getAllTask().entrySet().stream()
                         .filter(a -> a.getValue().getTask().contains(substring))
-                        .forEach(a -> super.out(a.getKey(), a.getValue()));
+                        .forEach(a -> out(a.getKey(), a.getValue()));
             } else {
                 System.err.println(NO_ARGS);
             }

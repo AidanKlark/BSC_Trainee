@@ -10,9 +10,9 @@ public class Print extends CommandImpl {
         switch (command) {
             case "print" -> StorageTask.getAllTask().entrySet().stream()
                     .filter(a -> !a.getValue().isStatus())
-                    .forEach(a -> super.out(a.getKey(), a.getValue()));
+                    .forEach(a -> out(a.getKey(), a.getValue()));
 
-            case "print all" -> StorageTask.getAllTask().forEach(super::out);
+            case "print all" -> StorageTask.getAllTask().forEach(this::out);
 
             default -> System.out.println("Неверная команда, повторите ввод");
         }

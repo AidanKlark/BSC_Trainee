@@ -16,7 +16,7 @@
         </encoder>
     </appender>
 
-    <root level="DEBUG">
+    <root level="${file:-DEBUG}">
         <appender-ref ref="file" />
     </root>
 </configuration>

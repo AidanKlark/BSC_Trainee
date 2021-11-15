@@ -9,7 +9,7 @@ import java.util.regex.Pattern;
 public class Search extends CommandImpl {
 
     @Override
-    public void execute(String command) {
+    public void accept (String command) {
 
         if (Pattern.matches("search.+", command)) {
 

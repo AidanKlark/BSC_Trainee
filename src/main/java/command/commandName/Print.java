@@ -2,10 +2,11 @@ package command.commandName;
 
 import command.CommandImpl;
 import storage.StorageTask;
+
 public class Print extends CommandImpl {
 
     @Override
-    public void execute(String command) {
+    public void accept(String command) {
 
         switch (command) {
             case "print" -> StorageTask.getAllTask().entrySet().stream()

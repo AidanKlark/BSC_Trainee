@@ -10,7 +10,7 @@ import java.util.regex.Pattern;
 public class Add extends CommandImpl {
 
     @Override
-    public void execute(String command) {
+    public void accept(String command) {
         if (Pattern.matches("add.+", command)) {
             String task = command.split(" ", 2)[1];
             log.debug("Добавлена задача: {}", task);

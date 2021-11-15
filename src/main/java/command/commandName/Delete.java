@@ -2,7 +2,7 @@ package command.commandName;
 
 import command.CommandImpl;
 import lombok.extern.slf4j.Slf4j;
-import service.Service;
+import parse.Service;
 import storage.StorageTask;
 import java.util.regex.Pattern;
 
@@ -10,7 +10,7 @@ import java.util.regex.Pattern;
 public class Delete extends CommandImpl {
 
     @Override
-    public void execute(String command) {
+    public void accept (String command) {
 
         if (Pattern.matches("delete.+", command)) {
             log.info("Запуск класса Delete");

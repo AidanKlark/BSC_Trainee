@@ -1,9 +1,13 @@
 package command.commandName;
 
 import command.CommandImpl;
+import lombok.Getter;
 import storage.StorageTask;
 
 public class Print extends CommandImpl {
+
+    @Getter
+    private final static String cmd = "print";
 
     @Override
     public void accept(String command) {

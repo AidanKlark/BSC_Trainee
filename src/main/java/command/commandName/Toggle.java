@@ -1,13 +1,16 @@
 package command.commandName;
 
 import command.CommandImpl;
+import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
-import parse.Service;
 import storage.StorageTask;
 import java.util.regex.Pattern;
 
 @Slf4j
 public class Toggle extends CommandImpl {
+
+    @Getter
+    private final static String cmd = "toggle";
 
     @Override
     public void accept (String command) {

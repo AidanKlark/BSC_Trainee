@@ -5,7 +5,6 @@ import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
 import storage.StorageTask;
 import storage.TaskStatus;
-import java.util.regex.Pattern;
 
 @Slf4j
 public class Edit extends CommandImpl {
@@ -16,20 +15,22 @@ public class Edit extends CommandImpl {
     @Override
     public void accept (String command) {
 
-        if (Pattern.matches("edit.+", command)) {
+        int id = 0;
+        try {
+            id = Integer.parseInt(parse.parseId(command));
+        } catch (NumberFormatException e) {
+            System.err.println(ERR_ID);
+        }
 
-            int id = Service.findId(command);
-            log.debug("Редактирование задачи по ID: {}", id);
+        log.debug("Редактирование задачи по ID: {}", id);
 
-            TaskStatus newTask = StorageTask.getAllTask().get(id);
+        TaskStatus newTask = StorageTask.getAllTask().get(id);
 
-            if (newTask != null && id >= 1 && id <= StorageTask.getAllTask().size()) {
-                newTask.setTask(command.split(" ", 3)[2]);
-                newTask.setStatus(false);
-
-            } else {
-                System.err.println(NO_ID);
-            }
+        if (newTask != null && id >= 1 && id <= StorageTask.getAllTask().size()) {
+            newTask.setTask(parse.parseCmdEdit(command));
+            newTask.setStatus(false);
+        } else {
+            System.err.println(NO_ID);
         }
     }
 }

@@ -1,14 +1,6 @@
 package parse;
 
-import lombok.Getter;
-
 public class CommandParser implements IParser {
-
-    @Getter
-    private String id;
-
-    @Getter
-    private String args;
 
     private static CommandParser commandParser;
 
@@ -21,24 +13,36 @@ public class CommandParser implements IParser {
     }
 
     @Override
-    public void parseIdArgs(String command) {
-        this.args = command.split(" ") [2];
-        parseId(command);
+    public String parseCmdEdit(String command) {
+        return command.split(" ") [2];
     }
 
     @Override
-    public void parseId(String command) {
-            this.id = command.split(" ") [1];
+    public String parseId(String command) {
+            return command.split(" ") [1];
     }
 
     @Override
-    public void parseArgs(String command) {
-        this.args = command.split(" ") [1];
+    public String parseArgs(String command) {
+        return command.split(" ") [1];
     }
 
     @Override
     public boolean isCmd(String inputCmd, String cmd) {
         return cmd.trim().startsWith(inputCmd);
+    }
+
+    @Override
+    public String parseCmd(String command) {
+        String cmd = "";
+
+        if (!command.equals(cmd)) {
+            cmd = command.contains(" ") ? command.split(" ") [0] : command;
+        } else {
+            System.out.println("Команда не введена");
+        }
+
+        return cmd;
     }
 }
 

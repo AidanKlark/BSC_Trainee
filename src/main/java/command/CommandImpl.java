@@ -9,6 +9,7 @@ public abstract class CommandImpl implements Consumer<String> {
 
     protected static final String NO_ID = "Задачи под таким номером не существует";
     protected static final String NO_ARGS = "Нет обязательного аргумента после команды";
+    protected static final String ERR_ID = "Неправильный формат, введите число после команды";
 
     protected IParser parse = CommandParser.getInstance();
 

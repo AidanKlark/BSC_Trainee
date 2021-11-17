@@ -1,8 +1,8 @@
+import command.CommandStart;
+import command.ICommandStart;
 import lombok.extern.slf4j.Slf4j;
-import parse.CommandParser;
-import parse.IParser;
-
 import java.io.BufferedReader;
+import java.io.IOException;
 import java.io.InputStreamReader;
 
 @Slf4j
@@ -12,6 +12,15 @@ public class Main {
 
         log.info("Запуск программы");
 
-        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
+        ICommandStart cmdStart = CommandStart.getInstance();
+
+        while (true) {
+            try {
+                cmdStart.start(bufferedReader.readLine());
+            } catch (IOException e) {
+                System.out.println("Что-то пошло не так..");
+            }
+        }
     }
 }

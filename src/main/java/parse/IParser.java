@@ -2,11 +2,13 @@ package parse;
 
 public interface IParser {
 
-    void parseIdArgs(String command);
+    String parseCmdEdit(String command);
 
-    void parseArgs(String command);
+    String parseArgs(String command);
 
-    void parseId(String command);
+    String parseId(String command);
 
     boolean isCmd(String inputCmd, String cmd);
+
+    String parseCmd(String command);
 }

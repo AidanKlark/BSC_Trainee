@@ -5,7 +5,6 @@ import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
 import storage.StorageTask;
 import storage.TaskStatus;
-import java.util.regex.Pattern;
 
 @Slf4j
 public class Add extends CommandImpl {
@@ -15,14 +14,13 @@ public class Add extends CommandImpl {
 
     @Override
     public void accept(String command) {
-        if (Pattern.matches("add.+", command)) {
-            String task = command.split(" ", 2)[1];
+
+            String task = parse.parseArgs(command);
             log.debug("Добавлена задача: {}", task);
 
             if (!task.isBlank()) {
                 StorageTask.addTask(new TaskStatus(task));
-            }
-        } else {
+            } else {
             System.out.println(NO_ARGS);
         }
     }

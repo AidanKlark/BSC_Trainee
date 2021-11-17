@@ -8,7 +8,5 @@ public interface IParser {
 
     String parseId(String command);
 
-    boolean isCmd(String inputCmd, String cmd);
-
     String parseCmd(String command);
 }

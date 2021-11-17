@@ -28,11 +28,6 @@ public class CommandParser implements IParser {
     }
 
     @Override
-    public boolean isCmd(String inputCmd, String cmd) {
-        return cmd.trim().startsWith(inputCmd);
-    }
-
-    @Override
     public String parseCmd(String command) {
         String cmd = "";
 

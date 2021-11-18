@@ -7,7 +7,7 @@ public class CommandFactory {
 
     public static Map<String, Consumer<String>> getCommand() {
         return Map.of(Add.getCmd(), new Add(),
-                Delete.getCmd(), new Toggle(),
+                Delete.getCmd(), new Delete(),
                 Edit.getCmd(), new Edit(),
                 Print.getCmd(), new Print(),
                 Search.getCmd(), new Search(),

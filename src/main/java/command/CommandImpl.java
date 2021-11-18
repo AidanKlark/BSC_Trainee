@@ -13,6 +13,17 @@ public abstract class CommandImpl implements Consumer<String> {
 
     protected IParser parse = CommandParser.getInstance();
 
+    protected int id(String command) {
+        int id = 0;
+        try {
+            id = Integer.parseInt(parse.parseId(command));
+        } catch (NumberFormatException e) {
+            System.err.println(ERR_ID);
+        }
+
+        return id;
+    }
+
     protected void out(Integer key, TaskStatus taskStatus) {
         System.out.printf("%d. %s %s\n", key, taskStatus.isStatus() ? "[X]" : "[ ]", taskStatus.getTask());
     }

@@ -8,7 +8,8 @@ public class Print extends CommandImpl {
 
     @Getter
     private final static String cmd = "print";
-    public final static String ALL = "print all";
+
+    private final static String ALL = "print all";
 
     @Override
     public void accept(String command) {

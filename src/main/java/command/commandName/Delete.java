@@ -16,13 +16,7 @@ public class Delete extends CommandImpl {
 
         log.info("Запуск класса Delete");
 
-        int id = 0;
-        try {
-            id = Integer.parseInt(parse.parseId(command));
-        } catch (NumberFormatException e) {
-            System.err.println(ERR_ID);
-        }
-
+        int id = id(command);
 
         if (StorageTask.getAllTask().get(id) != null && id >= 1 && id <= StorageTask.getAllTask().size()) {
             log.debug("Удаление задачи по ID: {}", id);

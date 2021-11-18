@@ -15,12 +15,7 @@ public class Edit extends CommandImpl {
     @Override
     public void accept (String command) {
 
-        int id = 0;
-        try {
-            id = Integer.parseInt(parse.parseId(command));
-        } catch (NumberFormatException e) {
-            System.err.println(ERR_ID);
-        }
+        int id = id(command);
 
         log.debug("Редактирование задачи по ID: {}", id);
 

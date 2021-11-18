@@ -6,7 +6,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 
 @Slf4j
-public class Main {
+public class ToDo {
 
     public static void main(String[] args) {
 

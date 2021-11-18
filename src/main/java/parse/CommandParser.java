@@ -34,10 +34,9 @@ public class CommandParser implements IParser {
         if (!command.equals(cmd)) {
             cmd = command.contains(" ") ? command.split(" ") [0] : command;
         } else {
-            System.out.println("Команда не введена");
+            System.err.println("Команда не введена");
         }
 
         return cmd;
     }
 }
-

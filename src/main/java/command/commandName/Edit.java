@@ -1,5 +1,6 @@
 package command.commandName;
 
+import IO.IErrorPrint;
 import command.CommandImpl;
 import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
@@ -15,7 +16,7 @@ public class Edit extends CommandImpl {
     @Override
     public void accept (String command) {
 
-        int id = id(command);
+        int id = CommandId.getId(command);
 
         log.debug("Редактирование задачи по ID: {}", id);
 
@@ -25,7 +26,7 @@ public class Edit extends CommandImpl {
             newTask.setTask(parse.parseCmdEdit(command));
             newTask.setStatus(false);
         } else {
-            System.err.println(NO_ID);
+            errPrint.printError(IErrorPrint.NO_ID);
         }
     }
 }

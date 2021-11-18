@@ -1,5 +1,6 @@
 package command.commandName;
 
+import IO.IErrorPrint;
 import command.CommandImpl;
 import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
@@ -16,13 +17,13 @@ public class Toggle extends CommandImpl {
 
         log.info("Запуск класса Toggle");
 
-        int id = id(command);
+        int id = CommandId.getId(command);
 
         if (StorageTask.getAllTask().get(id) != null && id >= 1 && id <= StorageTask.getAllTask().size()) {
             StorageTask.getAllTask().get(id).setStatus(!StorageTask.getAllTask().get(id).isStatus());
 
         } else {
-            System.err.println(NO_ID);
+            errPrint.printError(IErrorPrint.NO_ID);
         }
     }
 }

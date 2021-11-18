@@ -1,5 +1,6 @@
 package command.commandName;
 
+import IO.IErrorPrint;
 import command.CommandImpl;
 import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
@@ -21,7 +22,7 @@ public class Add extends CommandImpl {
             if (!task.isBlank()) {
                 StorageTask.addTask(new TaskStatus(task));
             } else {
-            System.out.println(NO_ARGS);
+            errPrint.printError(IErrorPrint.NO_ARGS);
         }
     }
 }

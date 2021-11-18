@@ -17,9 +17,9 @@ public class Print extends CommandImpl {
         if (!command.equals(ALL)) {
             StorageTask.getAllTask().entrySet().stream()
                     .filter(a -> !a.getValue().isStatus())
-                    .forEach(a -> out(a.getKey(), a.getValue()));
+                    .forEach(a -> cmdPrint.out(a.getKey(), a.getValue()));
         } else {
-            StorageTask.getAllTask().forEach(this::out);
+            StorageTask.getAllTask().forEach(cmdPrint::out);
         }
     }
 }

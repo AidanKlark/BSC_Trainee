@@ -1,18 +1,23 @@
 package command;
 
+import IO.CommandPrint;
+import IO.ErrorPrint;
+import IO.ICommandPrint;
+import IO.IErrorPrint;
 import command.commandName.CommandFactory;
 import parse.CommandParser;
 import parse.IParser;
 import java.util.Map;
 import java.util.function.Consumer;
 
-public class CommandStart implements ICommandStart{
+public class CommandStart implements ICommandStart {
 
     private static final IParser parse = CommandParser.getInstance();
     private static final Map<String, Consumer<String>> getCmd = CommandFactory.getCommand();
-    private static CommandStart commandStart;
 
-    public static CommandStart getInstance() {
+    private static ICommandStart commandStart;
+
+    public static ICommandStart getInstance() {
         if(commandStart == null) {
             commandStart = new CommandStart();
         }

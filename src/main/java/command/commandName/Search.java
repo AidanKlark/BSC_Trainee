@@ -1,5 +1,6 @@
 package command.commandName;
 
+import IO.IErrorPrint;
 import command.CommandImpl;
 import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
@@ -20,9 +21,9 @@ public class Search extends CommandImpl {
         if (!substring.isBlank()) {
             StorageTask.getAllTask().entrySet().stream()
                     .filter(a -> a.getValue().getTask().contains(substring))
-                    .forEach(a -> out(a.getKey(), a.getValue()));
+                    .forEach(a -> cmdPrint.out(a.getKey(), a.getValue()));
         } else {
-            System.err.println(NO_ARGS);
+            errPrint.printError(IErrorPrint.NO_ARGS);
         }
     }
 }

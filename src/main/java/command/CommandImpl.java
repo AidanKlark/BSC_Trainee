@@ -1,10 +1,15 @@
 package command;
 
-import storage.TaskStatus;
+import IO.CommandPrint;
+import IO.ErrorPrint;
+import IO.ICommandPrint;
+import IO.IErrorPrint;
+import parse.CommandParser;
+import parse.IParser;
+import java.util.function.Consumer;
 
-public abstract class CommandImpl implements ICommand {
-
-    protected void out(Integer key, TaskStatus taskStatus) {
-        System.out.printf("%d. %s %s\n", key, taskStatus.isStatus() ? "[X]" : "[ ]", taskStatus.getTask());
-    }
+public abstract class CommandImpl implements Consumer<String> {
+    protected static final IErrorPrint errPrint = ErrorPrint.getInstance();
+    protected static final ICommandPrint cmdPrint = CommandPrint.getInstance();
+    protected static final IParser parse = CommandParser.getInstance();
 }

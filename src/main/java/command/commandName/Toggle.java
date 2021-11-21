@@ -1,19 +1,18 @@
 package command.commandName;
 
 import IO.IErrorPrint;
-import command.CommandImpl;
 import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
 import storage.StorageTask;
 
 @Slf4j
-public class Toggle extends CommandImpl {
+public class Toggle extends CommandStartImpl {
 
     @Getter
     private final static String cmd = "toggle";
 
     @Override
-    public void accept (String command) {
+    public void accept(String command) {
 
         log.info("Запуск класса Toggle");
 

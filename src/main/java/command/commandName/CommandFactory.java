@@ -14,9 +14,4 @@ public class CommandFactory {
                 Toggle.getCmd(), new Toggle(),
                 Quit.getCmd(), new Quit());
     }
-
-
-
-
-
 }

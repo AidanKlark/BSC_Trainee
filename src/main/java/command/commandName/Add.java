@@ -1,14 +1,13 @@
 package command.commandName;
 
 import IO.IErrorPrint;
-import command.CommandImpl;
 import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
 import storage.StorageTask;
 import storage.TaskStatus;
 
 @Slf4j
-public class Add extends CommandImpl {
+public class Add extends CommandStartImpl {
 
     @Getter
     private final static String cmd = "add";

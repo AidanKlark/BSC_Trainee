@@ -1,9 +1,8 @@
 package command.commandName;
 
-import command.CommandImpl;
 import lombok.Getter;
 
-public class Quit extends CommandImpl {
+public class Quit extends CommandStartImpl {
 
     @Getter
     private final static String cmd = "quit";

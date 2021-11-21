@@ -1,20 +1,19 @@
 package command.commandName;
 
 import IO.IErrorPrint;
-import command.CommandImpl;
 import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
 import storage.StorageTask;
 import storage.TaskStatus;
 
 @Slf4j
-public class Edit extends CommandImpl {
+public class Edit extends CommandStartImpl {
 
     @Getter
     private final static String cmd = "edit";
 
     @Override
-    public void accept (String command) {
+    public void accept(String command) {
 
         int id = CommandId.getId(command);
 

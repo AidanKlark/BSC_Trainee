@@ -15,7 +15,7 @@ public class ToDo {
         log.info("Запуск программы");
 
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
-        ICommandStart cmdStart = CommandStart.getInstance();
+        CommandStart cmdStart = CommandStart.getInstance();
         IErrorPrint errPrint = ErrorPrint.getInstance();
 
         while (true) {

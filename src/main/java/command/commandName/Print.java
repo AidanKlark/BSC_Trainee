@@ -1,10 +1,9 @@
 package command.commandName;
 
-import command.CommandImpl;
 import lombok.Getter;
 import storage.StorageTask;
 
-public class Print extends CommandImpl {
+public class Print extends CommandStartImpl {
 
     @Getter
     private final static String cmd = "print";

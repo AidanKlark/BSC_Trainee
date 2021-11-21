@@ -1,18 +1,17 @@
 package command.commandName;
 
-import command.CommandImpl;
 import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
 import storage.StorageTask;
 
 @Slf4j
-public class Delete extends CommandImpl {
+public class Delete extends CommandStartImpl {
 
     @Getter
     private final static String cmd = "delete";
 
     @Override
-    public void accept (String command) {
+    public void accept(String command) {
 
         log.info("Запуск класса Delete");
 

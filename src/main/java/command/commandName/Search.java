@@ -1,19 +1,18 @@
 package command.commandName;
 
 import IO.IErrorPrint;
-import command.CommandImpl;
 import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
 import storage.StorageTask;
 
 @Slf4j
-public class Search extends CommandImpl {
+public class Search extends CommandStartImpl {
 
     @Getter
     private final static String cmd = "search";
 
     @Override
-    public void accept (String command) {
+    public void accept(String command) {
 
         String substring = parse.parseArgs(command);
         log.debug("Поиск по ключевому слову: {}", substring);

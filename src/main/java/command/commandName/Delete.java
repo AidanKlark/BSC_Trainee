@@ -5,7 +5,7 @@ import lombok.extern.slf4j.Slf4j;
 import storage.StorageTask;
 
 @Slf4j
-public class Delete extends CommandStartImpl {
+public class Delete extends CommandBase {
 
     @Getter
     private final static String cmd = "delete";

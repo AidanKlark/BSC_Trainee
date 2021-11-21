@@ -4,13 +4,12 @@ import IO.CommandPrint;
 import IO.ErrorPrint;
 import IO.ICommandPrint;
 import IO.IErrorPrint;
-import command.ICommandStart;
 import parse.CommandParser;
 import parse.IParser;
 
 import java.util.function.Consumer;
 
-public abstract class CommandStartImpl implements Consumer<String> {
+public abstract class CommandBase implements Consumer<String> {
 
     protected static final IParser parse = CommandParser.getInstance();
     protected static final IErrorPrint errPrint = ErrorPrint.getInstance();

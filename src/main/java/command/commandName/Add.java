@@ -7,7 +7,7 @@ import storage.StorageTask;
 import storage.TaskStatus;
 
 @Slf4j
-public class Add extends CommandStartImpl {
+public class Add extends CommandBase {
 
     @Getter
     private final static String cmd = "add";

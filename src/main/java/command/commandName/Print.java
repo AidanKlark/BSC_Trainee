@@ -3,7 +3,7 @@ package command.commandName;
 import lombok.Getter;
 import storage.StorageTask;
 
-public class Print extends CommandStartImpl {
+public class Print extends CommandBase {
 
     @Getter
     private final static String cmd = "print";

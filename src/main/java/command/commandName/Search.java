@@ -6,7 +6,7 @@ import lombok.extern.slf4j.Slf4j;
 import storage.StorageTask;
 
 @Slf4j
-public class Search extends CommandStartImpl {
+public class Search extends CommandBase {
 
     @Getter
     private final static String cmd = "search";

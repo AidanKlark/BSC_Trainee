@@ -6,7 +6,7 @@ import lombok.extern.slf4j.Slf4j;
 import storage.StorageTask;
 
 @Slf4j
-public class Toggle extends CommandStartImpl {
+public class Toggle extends CommandBase {
 
     @Getter
     private final static String cmd = "toggle";

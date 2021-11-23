@@ -1,32 +1,31 @@
 package command.commandName;
 
-import command.CommandImpl;
+import IO.IErrorPrint;
+import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
-import service.Service;
 import storage.StorageTask;
 import storage.TaskStatus;
-import java.util.regex.Pattern;
 
 @Slf4j
-public class Edit extends CommandImpl {
+public class Edit extends CommandBase {
+
+    @Getter
+    private static final String cmd = "edit";
 
     @Override
-    public void execute(String command) {
+    public void accept(String command) {
 
-        if (Pattern.matches("edit.+", command)) {
+        int id = CommandId.getId(command);
 
-            int id = Service.findId(command);
-            log.debug("Редактирование задачи по ID: {}", id);
+        log.debug("Редактирование задачи по ID: {}", id);
 
-            TaskStatus newTask = StorageTask.getAllTask().get(id);
+        TaskStatus newTask = StorageTask.getAllTask().get(id);
 
-            if (newTask != null && id >= 1 && id <= StorageTask.getAllTask().size()) {
-                newTask.setTask(command.split(" ", 3)[2]);
-                newTask.setStatus(false);
-
-            } else {
-                System.err.println(NO_ID);
-            }
+        if (newTask != null && id >= 1 && id <= StorageTask.getAllTask().size()) {
+            newTask.setTask(parse.parseCmdEdit(command));
+            newTask.setStatus(false);
+        } else {
+            errPrint.printError(IErrorPrint.NO_ID);
         }
     }
 }

@@ -11,7 +11,7 @@ public class CommandFactory {
     private final IParser parse = CommandParser.getInstance();
     Map<String, Consumer<String>> cmdFactory;
 
-    private void commandFactory() {
+    public CommandFactory() {
         cmdFactory = new HashMap<>();
 
         cmdFactory.put(Add.getCmd(), new Add());
@@ -23,13 +23,7 @@ public class CommandFactory {
         cmdFactory.put(Quit.getCmd(), new Quit());
     }
 
-    public void getCmd(String cmd) {
-        commandFactory();
-        Consumer<String> cn = cmdFactory.get(parse.parseCmd(cmd));
-        if (cn != null) {
-            cn.accept(cmd);
-        } else {
-            System.out.println("Повторите ввод команды");
-        }
+    public Consumer<String> getCmd(String cmd) {
+        return  cmdFactory.get(parse.parseCmd(cmd));
     }
 }

@@ -1,8 +1,10 @@
-package IO;
+package com.example.todo.IO;
 
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.stereotype.Component;
 
 @Slf4j
+@Component
 public class ErrorPrint implements IErrorPrint{
 
     private static ErrorPrint errorPrint;

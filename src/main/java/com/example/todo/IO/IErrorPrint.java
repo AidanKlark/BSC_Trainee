@@ -1,4 +1,4 @@
-package IO;
+package com.example.todo.IO;
 
 public interface IErrorPrint {
     String ERR_ID = "Неправильный формат, введите число после команды";

@@ -1,7 +1,9 @@
-package IO;
+package com.example.todo.IO;
 
-import storage.TaskStatus;
+import com.example.todo.storage.TaskStatus;
+import org.springframework.stereotype.Component;
 
+@Component
 public class CommandPrint implements ICommandPrint{
 
     private static ICommandPrint commandPrint;

@@ -1,26 +1,19 @@
-package parse;
+package com.example.todo.parse;
 
+import org.springframework.stereotype.Service;
+
+@Service
 public class CommandParser implements IParser {
-
-    private static CommandParser commandParser;
-
-    public static CommandParser getInstance() {
-        if(commandParser == null) {
-            commandParser = new CommandParser();
-        }
-
-        return commandParser;
-    }
 
     @Override
     public String parseCmdEdit(String command) {
         return command.split(" ") [2];
     }
 
-
     @Override
     public String parseArgs(String command) {
-        return command.split(" ") [1];
+
+        return command.contains(" ") ? command.split(" ") [1] : "";
     }
 
     @Override

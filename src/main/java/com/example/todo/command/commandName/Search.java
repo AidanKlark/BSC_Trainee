@@ -1,15 +1,25 @@
-package command.commandName;
+package com.example.todo.command.commandName;
 
-import IO.IErrorPrint;
+import com.example.todo.IO.ICommandPrint;
+import com.example.todo.IO.IErrorPrint;
+import com.example.todo.parse.IParser;
 import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
-import storage.StorageTask;
+import com.example.todo.storage.StorageTask;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 @Slf4j
+@Component
 public class Search extends CommandBase {
 
     @Getter
     private static final String cmd = "search";
+
+    @Autowired
+    public Search(ICommandPrint commandPrint, IParser parse) {
+        super(parse, commandPrint);
+    }
 
     @Override
     public void accept(String command) {

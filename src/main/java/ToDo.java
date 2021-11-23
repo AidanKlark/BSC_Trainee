@@ -2,6 +2,7 @@ import IO.ErrorPrint;
 import IO.IErrorPrint;
 import command.CommandStart;
 import command.ICommandStart;
+import command.commandName.CommandFactory;
 import lombok.extern.slf4j.Slf4j;
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -15,7 +16,8 @@ public class ToDo {
         log.info("Запуск программы");
 
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
-        CommandStart cmdStart = CommandStart.getInstance();
+        CommandFactory commandFactory = new CommandFactory();
+        CommandStart cmdStart = new CommandStart(commandFactory);
         IErrorPrint errPrint = ErrorPrint.getInstance();
 
         while (true) {

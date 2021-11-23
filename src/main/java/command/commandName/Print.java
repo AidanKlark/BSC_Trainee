@@ -6,7 +6,7 @@ import storage.StorageTask;
 public class Print extends CommandBase {
 
     @Getter
-    private final static String cmd = "print";
+    private static final String cmd = "print";
 
     private final static String ALL = "print all";
 

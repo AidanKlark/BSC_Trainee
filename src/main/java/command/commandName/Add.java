@@ -10,7 +10,7 @@ import storage.TaskStatus;
 public class Add extends CommandBase {
 
     @Getter
-    private final static String cmd = "add";
+    private static final String cmd = "add";
 
     @Override
     public void accept(String command) {

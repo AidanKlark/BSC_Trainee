@@ -6,7 +6,5 @@ public interface IParser {
 
     String parseArgs(String command);
 
-    String parseId(String command);
-
     String parseCmd(String command);
 }

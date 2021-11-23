@@ -13,7 +13,7 @@ public class CommandId {
     protected static int getId(String command) {
         int id = 0;
         try {
-            id = Integer.parseInt(parse.parseId(command));
+            id = Integer.parseInt(parse.parseArgs(command));
         } catch (NumberFormatException e) {
             errPrint.printErrEx(IErrorPrint.ERR_ID, e);
         }

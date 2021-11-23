@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class StorageTask {
-    private static final HashMap<Integer, TaskStatus> idTask = new HashMap<>();
+    private static final Map<Integer, TaskStatus> idTask = new HashMap<>();
     private static int id = 1;
 
     public static Map<Integer, TaskStatus> getAllTask() {

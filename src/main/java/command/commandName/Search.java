@@ -9,7 +9,7 @@ import storage.StorageTask;
 public class Search extends CommandBase {
 
     @Getter
-    private final static String cmd = "search";
+    private static final String cmd = "search";
 
     @Override
     public void accept(String command) {

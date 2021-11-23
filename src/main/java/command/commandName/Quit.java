@@ -5,7 +5,7 @@ import lombok.Getter;
 public class Quit extends CommandBase {
 
     @Getter
-    private final static String cmd = "quit";
+    private static final String cmd = "quit";
 
     @Override
     public void accept(String command) {

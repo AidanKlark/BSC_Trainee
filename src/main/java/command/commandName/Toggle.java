@@ -9,7 +9,7 @@ import storage.StorageTask;
 public class Toggle extends CommandBase {
 
     @Getter
-    private final static String cmd = "toggle";
+    private static final String cmd = "toggle";
 
     @Override
     public void accept(String command) {

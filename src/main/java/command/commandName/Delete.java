@@ -8,7 +8,7 @@ import storage.StorageTask;
 public class Delete extends CommandBase {
 
     @Getter
-    private final static String cmd = "delete";
+    private static final String cmd = "delete";
 
     @Override
     public void accept(String command) {

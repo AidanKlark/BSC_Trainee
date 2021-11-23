@@ -17,10 +17,6 @@ public class CommandParser implements IParser {
         return command.split(" ") [2];
     }
 
-    @Override
-    public String parseId(String command) {
-            return command.split(" ") [1];
-    }
 
     @Override
     public String parseArgs(String command) {

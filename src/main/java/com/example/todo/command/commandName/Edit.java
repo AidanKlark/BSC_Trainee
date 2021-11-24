@@ -24,8 +24,7 @@ public class Edit extends CommandBase {
     @Override
     public void accept(String command) {
 
-        int id = new CommandId(parse, errPrint).getId(command);
-
+        int id = parse.parseId(command);
         log.debug("Редактирование задачи по ID: {}", id);
 
         TaskStatus newTask = StorageTask.getAllTask().get(id);

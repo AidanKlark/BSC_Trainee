@@ -26,7 +26,7 @@ public class Toggle extends CommandBase {
 
         log.info("Запуск класса Toggle");
 
-        int id = new CommandId(parse, errPrint).getId(command);
+        int id = parse.parseId(command);
 
         if (StorageTask.getAllTask().get(id) != null && id >= 1 && id <= StorageTask.getAllTask().size()) {
             StorageTask.getAllTask().get(id).setStatus(!StorageTask.getAllTask().get(id).isStatus());

@@ -25,7 +25,7 @@ public class Delete extends CommandBase {
 
         log.info("Запуск класса Delete");
 
-        int id = new CommandId(parse, errPrint).getId(command);
+        int id = parse.parseId(command);
 
         if (StorageTask.getAllTask().get(id) != null && id >= 1 && id <= StorageTask.getAllTask().size()) {
             log.debug("Удаление задачи по ID: {}", id);

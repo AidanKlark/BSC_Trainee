@@ -7,25 +7,28 @@ public class CommandParser implements IParser {
 
     @Override
     public String parseCmdEdit(String command) {
-        return command.split(" ") [2];
+        return command.split(" ", 3) [2];
     }
 
     @Override
     public String parseArgs(String command) {
-
-        return command.contains(" ") ? command.split(" ") [1] : "";
+        return command.contains(" ") ? command.split(" ", 2) [1] : "";
     }
 
     @Override
     public String parseCmd(String command) {
         String cmd = "";
-
-        if (!command.equals(cmd)) {
-            cmd = command.contains(" ") ? command.split(" ") [0] : command;
-        } else {
-            System.err.println("Команда не введена");
-        }
-
+        cmd = command.contains(" ") ? command.split(" ") [0] : command;
         return cmd;
+    }
+
+    @Override
+    public int parseId(String command) {
+        try {
+            return Integer.parseInt(command.split(" ") [1]);
+
+        } catch (NumberFormatException e) {
+            return -1;
+        }
     }
 }

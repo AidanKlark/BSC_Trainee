@@ -7,16 +7,6 @@ import org.springframework.stereotype.Component;
 @Component
 public class ErrorPrint implements IErrorPrint{
 
-    private static ErrorPrint errorPrint;
-
-    public static IErrorPrint getInstance() {
-        if(errorPrint == null) {
-            errorPrint = new ErrorPrint();
-        }
-
-        return errorPrint;
-    }
-
     @Override
     public void printError(String message) {
         log.error(message);

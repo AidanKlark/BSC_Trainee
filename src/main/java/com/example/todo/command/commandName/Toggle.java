@@ -14,7 +14,7 @@ import org.springframework.stereotype.Component;
 public class Toggle extends CommandBase {
 
     @Getter
-    private static final String cmd = "toggle";
+    private final String cmd = "toggle";
 
     @Autowired
     public Toggle(IParser parse, ErrorPrint errorPrint) {

@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
 public class Print extends CommandBase {
 
     @Getter
-    private static final String cmd = "print";
+    private final String cmd = "print";
 
     private final static String ALL = "print all";
 

@@ -5,7 +5,7 @@ import com.example.todo.IO.IErrorPrint;
 import com.example.todo.parse.IParser;
 import java.util.function.Consumer;
 
-public abstract class CommandBase implements Consumer<String> {
+public abstract class CommandBase implements ICommand {
 
     protected IParser parse;
     protected IErrorPrint errPrint;

@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 public class Quit extends CommandBase {
 
     @Getter
-    private static final String cmd = "quit";
+    private final String cmd = "quit";
 
     @Autowired
     public Quit(ICommandPrint commandPrint) {

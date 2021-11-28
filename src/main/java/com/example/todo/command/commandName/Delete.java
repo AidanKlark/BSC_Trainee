@@ -13,7 +13,7 @@ import org.springframework.stereotype.Component;
 public class Delete extends CommandBase {
 
     @Getter
-    private static final String cmd = "delete";
+    private final String cmd = "delete";
 
     @Autowired
     public Delete(IParser parse, ErrorPrint errorPrint) {

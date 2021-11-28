@@ -14,7 +14,7 @@ import org.springframework.stereotype.Component;
 public class Add extends CommandBase {
 
     @Getter
-    private static final String cmd = "add";
+    private final String cmd = "add";
 
     @Autowired
     public Add(IParser parse, IErrorPrint errorPrint) {

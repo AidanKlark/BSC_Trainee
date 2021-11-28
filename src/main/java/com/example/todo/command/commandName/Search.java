@@ -14,7 +14,7 @@ import org.springframework.stereotype.Component;
 public class Search extends CommandBase {
 
     @Getter
-    private static final String cmd = "search";
+    private final String cmd = "search";
 
     @Autowired
     public Search(ICommandPrint commandPrint, IParser parse) {

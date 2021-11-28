@@ -14,7 +14,7 @@ import org.springframework.stereotype.Component;
 public class Edit extends CommandBase {
 
     @Getter
-    private static final String cmd = "edit";
+    private final String cmd = "edit";
 
     @Autowired
     public Edit(IParser parse, IErrorPrint errorPrint) {

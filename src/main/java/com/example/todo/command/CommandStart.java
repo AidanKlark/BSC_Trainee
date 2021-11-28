@@ -1,29 +1,34 @@
 package com.example.todo.command;
 
+import com.example.todo.command.commandName.ICommand;
 import com.example.todo.parse.IParser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
-import java.util.function.Consumer;
 
 @Component
-public class CommandStart implements ICommandStart{
+public class CommandStart implements ICommandStart {
 
-    private final Map<String, Consumer<String>> getCmd;
+    private final Map<String, ICommand> getCmd;
     private final IParser parse;
 
     @Autowired
-    public CommandStart(Map<String, Consumer<String>> getCmd, IParser parse) {
-        this.getCmd = getCmd;
+    public CommandStart(List<ICommand> listCmd, IParser parse) {
+        this.getCmd = new HashMap<>();
+        for (ICommand i : listCmd)
+            getCmd.put(i.getCmd(),i);
+
         this.parse = parse;
     }
 
     @Override
     public void start(String inputCmd) {
-        Consumer<String> cn = getCmd.get(parse.parseCmd(inputCmd));
+        ICommand command = getCmd.get(parse.parseCmd(inputCmd));
 
-        if (cn != null) {
-            cn.accept(inputCmd);
+        if (command != null) {
+            command.accept(inputCmd);
         } else {
             System.out.println("Повторите команду");
         }

@@ -7,6 +7,8 @@ import org.springframework.stereotype.Component;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.function.Function;
+import java.util.stream.Collectors;
 
 @Component
 public class CommandFactory {
@@ -16,9 +18,7 @@ public class CommandFactory {
 
     @Autowired
     public CommandFactory(List<ICommand> listCmd, IParser parse) {
-        this.commands = new HashMap<>();
-        for (ICommand i : listCmd)
-            commands.put(i.getCmd(),i);
+        this.commands = listCmd.stream().collect(Collectors.toMap(ICommand::getCmd, Function.identity()));
         this.parse = parse;
     }
 

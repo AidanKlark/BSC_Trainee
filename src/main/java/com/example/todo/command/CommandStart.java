@@ -9,17 +9,15 @@ import org.springframework.stereotype.Component;
 public class CommandStart implements ICommandStart {
 
     private final CommandFactory commandFactory;
-    private final IParser parse;
 
     @Autowired
     public CommandStart(CommandFactory  commandFactory, IParser parse) {
         this.commandFactory = commandFactory;
-        this.parse = parse;
     }
 
     @Override
     public void start(String inputCmd) {
-        ICommand command = commandFactory.getCommands().get(parse.parseCmd(inputCmd));
+        ICommand command = commandFactory.getCommand(inputCmd);
 
         if (command != null) {
             command.accept(inputCmd);

@@ -1,4 +1,4 @@
-package command;
+package com.example.todo.command;
 
 public interface ICommandStart {
 

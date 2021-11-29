@@ -1,4 +1,4 @@
-package storage;
+package com.example.todo.storage;
 
 import lombok.Data;
 

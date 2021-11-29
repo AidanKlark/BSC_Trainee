@@ -1,4 +1,4 @@
-package parse;
+package com.example.todo.parse;
 
 public interface IParser {
 
@@ -7,4 +7,6 @@ public interface IParser {
     String parseArgs(String command);
 
     String parseCmd(String command);
+
+    int parseId(String command);
 }

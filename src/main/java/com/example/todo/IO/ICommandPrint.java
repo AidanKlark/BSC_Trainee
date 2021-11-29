@@ -1,6 +1,6 @@
-package IO;
+package com.example.todo.IO;
 
-import storage.TaskStatus;
+import com.example.todo.storage.TaskStatus;
 
 public interface ICommandPrint {
 

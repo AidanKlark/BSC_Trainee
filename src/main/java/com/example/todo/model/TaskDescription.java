@@ -7,7 +7,6 @@ import javax.validation.constraints.NotNull;
 @Data
 public class TaskDescription {
 
-    @NotNull
     @NotBlank
     private String taskDescription;
 }

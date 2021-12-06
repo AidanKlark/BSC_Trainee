@@ -7,7 +7,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 @org.springframework.stereotype.Service
-public class Service implements IService{
+public class TaskService implements IService{
 
     private final Map<Integer, TaskModel> allTask = new HashMap<>();
     private int id = 1;

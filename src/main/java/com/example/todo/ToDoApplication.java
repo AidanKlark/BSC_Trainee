@@ -6,11 +6,11 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @Slf4j
 @SpringBootApplication
-public class ToDo {
+public class ToDoApplication {
 
     public static void main(String[] args) {
 
         log.info("Запуск программы");
-        SpringApplication.run(ToDo.class, args);
+        SpringApplication.run(ToDoApplication.class, args);
     }
 }

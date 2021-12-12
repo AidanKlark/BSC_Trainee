@@ -1,53 +1,61 @@
 package com.example.todo.controllers;
 
-import com.example.todo.model.TaskDescription;
-import com.example.todo.model.TaskModel;
-import com.example.todo.service.IService;
-import lombok.RequiredArgsConstructor;
+import com.example.todo.models.TaskDescription;
+import com.example.todo.models.TaskEntity;
+import com.example.todo.repository.TaskRepository;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 import javax.validation.constraints.Min;
-import java.util.Map;
+import java.util.List;
 
-@org.springframework.web.bind.annotation.RestController
+@RestController
 @Slf4j
-@RequiredArgsConstructor
+@Validated
 @RequestMapping("/tasks")
 public class TaskController {
 
-    private final IService taskService;
+    private final TaskRepository taskRepository;
+
+    @Autowired
+    public TaskController(TaskRepository taskRepository) {
+        this.taskRepository = taskRepository;
+    }
 
     @PostMapping
     public void createTask(@Valid @RequestBody TaskDescription taskDescription){
         log.info("Добавлена задача: {}", taskDescription.getTaskDescription());
-        taskService.add(taskDescription);
+        taskRepository.save(new TaskEntity(taskDescription, false));
     }
 
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void deleteTask(@PathVariable @Min(1) Integer id){
+    public void deleteTask(@PathVariable @Min(1) Long id){
         log.info("Удаление по ID: {}", id);
-        taskService.delete(id);
+        taskRepository.deleteById(id);
     }
 
     @PatchMapping("/{id}")
-    public void updateTask(@PathVariable @Min(1) Integer id, @Valid @RequestBody TaskDescription taskDescription){
-        log.info("Изменение задачи: {}: {}", id, taskDescription);
-        taskService.edit(id, taskDescription);
+    public void updateTask(@PathVariable @Min(1) Long id, @Valid @RequestBody TaskDescription taskDescription){
+        log.info("Изменение задачи: {}: {}", id, taskDescription.getTaskDescription());
+        taskRepository.editTask(id, taskDescription.getTaskDescription());
     }
 
     @PatchMapping("/{id}/status")
-    public void updateStatusTask(@PathVariable @Min(1) Integer id){
+    public void updateStatusTask(@PathVariable @Min(1) Long id){
         log.info("Изменение статуса по ID: {}", id);
-        taskService.toggle(id);
+        taskRepository.toggleTask(id);
     }
 
     @GetMapping
-    public Map<Integer, TaskModel> getTasks(@RequestParam(name = "all", required = false) Boolean all,
-                                            @RequestParam(name = "substring", required = false) String substring) {
+    public List<TaskEntity> getTasks(@RequestParam(name = "all", required = false)
+                                                 Boolean all,
+                                     @RequestParam(name = "substring", required = false, defaultValue = "")
+                                             String substring) {
 
-        return taskService.getTasks(all, substring);
+        return taskRepository.getTasks(all, substring);
     }
 }

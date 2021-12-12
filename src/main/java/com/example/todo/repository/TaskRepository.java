@@ -12,15 +12,15 @@ import java.util.List;
 public interface TaskRepository extends JpaRepository<TaskEntity, Long> {
 
     @Modifying
-    @Query(value = "UPDATE TaskEntity t SET t.status =" +
-            " (case t.status when false then true else false end) WHERE t.id = ?1")
+    @Query(value = "UPDATE TaskEntity t SET t.completed =" +
+            " (case t.completed when false then true else false end) WHERE t.id = ?1")
     void toggleTask(Long id);
 
     @Modifying
     @Query(value = "UPDATE TaskEntity t SET t.description = ?2 WHERE t.id = ?1")
     void editTask(Long id, String newTask);
 
-    @Query(value = "SELECT t FROM TaskEntity t WHERE (:all = true OR t.status = :all) AND " +
+    @Query(value = "SELECT t FROM TaskEntity t WHERE (:all = true OR t.completed = :all) AND " +
             "((:substring = '') OR t.description LIKE %:substring%)")
-    List<TaskEntity> getTasks(@Param("all") boolean all, @Param("substring") String substring);
+    List<TaskEntity> getTasks(@Param("all") Boolean all, @Param("substring") String substring);
 }

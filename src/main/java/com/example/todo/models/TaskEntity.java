@@ -7,7 +7,7 @@ import javax.validation.constraints.NotNull;
 @NoArgsConstructor
 @Data
 @Entity
-@Table(name = "tasks")
+@Table(name = "task")
 public class TaskEntity {
 
     @Id

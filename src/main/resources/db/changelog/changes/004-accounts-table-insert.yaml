@@ -1,0 +1,17 @@
+databaseChangeLog:
+  - changeSet:
+      author: AKl
+      id: "004-accounts-table-insert"
+      changes:
+        - insert:
+            tableName: accounts
+            columns:
+              - column:
+                  name: username
+                  value: admin
+              - column:
+                  name: password
+                  value: $2a$10$Md43wZ3mTO7fSEl2/jFSXuIv6pZxOq5Nu5ncmCFfGH8xOiLIIx3QK
+              - column:
+                  name: role
+                  value: ADMIN

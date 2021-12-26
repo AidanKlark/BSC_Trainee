@@ -2,9 +2,9 @@ package com.example.todo.service;
 
 import com.example.todo.models.TaskDescription;
 import com.example.todo.models.TaskEntity;
-import com.example.todo.repository.CustomTaskRepository;
 import com.example.todo.repository.TaskRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -15,6 +15,7 @@ import java.util.NoSuchElementException;
 public class TaskServiceImpl implements TaskService {
 
     private final TaskRepository repository;
+    private final AccountService userService;
 
     public void toggleTask(Long id) {
         TaskEntity task = repository.findById(id).orElseThrow(() ->
@@ -33,12 +34,13 @@ public class TaskServiceImpl implements TaskService {
 
 
     public List<TaskEntity> getTasks(Boolean all, String substring) {
-        return repository.getTasks(all, substring);
+        return repository.getTasks(all, substring,
+                userService.getAccountByUsername(SecurityContextHolder.getContext().getAuthentication().getName()).getId());
     }
 
     @Override
-    public void addTask(TaskDescription description) {
-        repository.save(new TaskEntity(description, false));
+    public void addTask(TaskDescription description, String username) {
+        repository.save(new TaskEntity(description, false, userService.getAccountByUsername(username)));
     }
 
     @Override

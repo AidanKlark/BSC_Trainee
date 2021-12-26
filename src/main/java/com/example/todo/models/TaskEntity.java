@@ -20,8 +20,14 @@ public class TaskEntity {
     @NotNull
     private Boolean completed;
 
-    public TaskEntity(TaskDescription taskDescription, Boolean completed) {
+    @ManyToOne
+    @JoinColumn(name = "account_id")
+    @NotNull
+    private AccountEntity account;
+
+    public TaskEntity(TaskDescription taskDescription, Boolean completed, AccountEntity account) {
         this.description = taskDescription.getTaskDescription();
         this.completed = completed;
+        this.account = account;
     }
 }

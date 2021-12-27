@@ -7,6 +7,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import java.util.NoSuchElementException;
 
@@ -34,8 +36,7 @@ public class AccountServiceImpl implements AccountService {
     @Override
     public void deleteAccount(String username) {
 
-        AccountEntity accountEntity = userRepository.findUserByUsername(username).orElseThrow(() ->
-                new NoSuchElementException("Пользователь не найден: " + username));
+        AccountEntity accountEntity = getAccountByUsername(username);
         userRepository.delete(accountEntity);
     }
 
@@ -48,6 +49,6 @@ public class AccountServiceImpl implements AccountService {
     @Override
     public List<AccountEntity> getAllAccounts() {
 
-        return (List<AccountEntity>) userRepository.findAll();
+        return new ArrayList<>((Collection<? extends AccountEntity>) userRepository.findAll());
     }
 }

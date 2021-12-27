@@ -6,11 +6,12 @@ import com.example.todo.service.AccountService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/admin")
+@RequestMapping("/admin/accounts")
 @Slf4j
 public class AccountController {
 
@@ -24,7 +25,7 @@ public class AccountController {
     }
 
     @PostMapping
-    public void addAccount(@RequestBody AccountDto userDto) {
+    public void addAccount(@RequestBody @Valid AccountDto userDto) {
         log.info("Создание пользователя: {}", userDto.getUsername());
 
         accountService.createAccount(userDto);

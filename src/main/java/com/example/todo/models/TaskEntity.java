@@ -20,7 +20,7 @@ public class TaskEntity {
     @NotNull
     private Boolean completed;
 
-    @ManyToOne
+    @ManyToOne(optional = false, fetch = FetchType.LAZY)
     @JoinColumn(name = "account_id")
     @NotNull
     private AccountEntity account;

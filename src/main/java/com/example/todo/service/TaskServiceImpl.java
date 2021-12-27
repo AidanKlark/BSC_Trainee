@@ -21,7 +21,7 @@ public class TaskServiceImpl implements TaskService {
 
         TaskEntity task = repository.findById(id).orElseThrow(() ->
                 new NoSuchElementException("Задачи с таким id: " + id + "не существует"));
-        taskOwner(task);
+        checkTaskOwner(task);
         task.setCompleted(!task.getCompleted());
         repository.save(task);
     }
@@ -31,7 +31,7 @@ public class TaskServiceImpl implements TaskService {
 
         TaskEntity task = repository.findById(id).orElseThrow(() ->
                 new NoSuchElementException("Задачи с таким id: " + id + "не существует"));
-        taskOwner(task);
+        checkTaskOwner(task);
         task.setDescription(taskDescription.getTaskDescription());
         task.setCompleted(false);
         repository.save(task);
@@ -55,11 +55,11 @@ public class TaskServiceImpl implements TaskService {
 
         TaskEntity task = repository.findById(id).orElseThrow(() ->
                 new NoSuchElementException("Задачи с таким id: " + id + "не существует"));
-        taskOwner(task);
+        checkTaskOwner(task);
         repository.delete(task);
     }
 
-    private void taskOwner(TaskEntity task) {
+    private void checkTaskOwner(TaskEntity task) {
 
         if (!task.getAccount().getUsername().equals(SecurityContextHolder.getContext().getAuthentication().getName())) {
             throw new NoMatchException("Задача из параллельной вселенной, технологии не освоены");

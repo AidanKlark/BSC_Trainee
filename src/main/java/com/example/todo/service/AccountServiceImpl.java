@@ -6,9 +6,7 @@ import com.example.todo.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 import java.util.NoSuchElementException;
 
@@ -49,6 +47,8 @@ public class AccountServiceImpl implements AccountService {
     @Override
     public List<AccountEntity> getAllAccounts() {
 
-        return new ArrayList<>((Collection<? extends AccountEntity>) userRepository.findAll());
+        List<AccountEntity> result = new ArrayList<>();
+        userRepository.findAll().forEach(result::add);
+        return result;
     }
 }

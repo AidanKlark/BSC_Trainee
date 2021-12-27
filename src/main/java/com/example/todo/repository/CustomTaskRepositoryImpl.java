@@ -17,7 +17,7 @@ public class CustomTaskRepositoryImpl implements CustomTaskRepository {
     private final EntityManager manager;
 
     @Override
-    public List<TaskEntity> getTasks(Boolean all, String substring) {
+    public List<TaskEntity> getTasks(Boolean all, String substring, Long accountId) {
 
         StringBuilder jpql = new StringBuilder("from TaskEntity t ");
         List<String> conditions = new ArrayList<>();
@@ -30,9 +30,11 @@ public class CustomTaskRepositoryImpl implements CustomTaskRepository {
                 conditions.add("t.completed <> true");
         }
 
+        jpql.append("where t.account.id = ").append(accountId);
+
         if (!conditions.isEmpty()) {
             jpql.append("where ")
-                    .append(String.join(" and ",conditions));
+                    .append(String.join(" and ", conditions));
         }
 
         TypedQuery<TaskEntity> typedQuery = manager.createQuery(jpql.toString(), TaskEntity.class);

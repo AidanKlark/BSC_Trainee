@@ -1,0 +1,14 @@
+databaseChangeLog:
+  - changeSet:
+      author: Akl
+      id: "003-task-table-alter"
+      changes:
+        - addColumn:
+            tableName: task
+            columns:
+              - column:
+                  name: account_id
+                  type: bigint
+                  constraints:
+                    nullable: false
+                    deleteCascade: true

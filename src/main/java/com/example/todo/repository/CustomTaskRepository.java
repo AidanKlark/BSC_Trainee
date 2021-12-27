@@ -6,5 +6,5 @@ import java.util.List;
 
 public interface CustomTaskRepository {
 
-    List<TaskEntity> getTasks(Boolean all, String substring);
+    List<TaskEntity> getTasks(Boolean all, String substring, Long accountId);
 }
